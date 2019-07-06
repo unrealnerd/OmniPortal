@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -11,10 +12,10 @@ import { SearchboxComponent } from './searchbox/searchbox.component';
   declarations: [
     AppComponent,
     ToolbarComponent,
-    SearchboxComponent
+    SearchboxComponent    
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule, AppMaterialModule
+    HttpClientModule, BrowserModule, BrowserAnimationsModule, AppMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

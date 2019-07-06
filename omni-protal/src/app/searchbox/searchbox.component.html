@@ -1,3 +1,12 @@
-<mat-grid-list cols="4" rowHeight="100px">
-  <mat-grid-tile cols=2>Search box goes here</mat-grid-tile>
+<mat-grid-list cols="2" rowHeight="100">
+  <div class="field-container">
+    <mat-grid-tile cols="6">
+      <mat-form-field class="searchbox">
+        <input matInput placeholder="Command">
+      </mat-form-field>
+    </mat-grid-tile>
+  </div>
+  <mat-grid-tile cols="6">
+    <button mat-raised-button color="primary" (click)=fetch()>Search</button>
+  </mat-grid-tile>
 </mat-grid-list>

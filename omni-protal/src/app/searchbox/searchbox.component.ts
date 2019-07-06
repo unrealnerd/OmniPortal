@@ -12,4 +12,8 @@ export class SearchboxComponent implements OnInit {
   ngOnInit() {
   }
 
+  fetch(){
+    alert('something happened');
+  }
+
 }
