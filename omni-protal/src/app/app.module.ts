@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { AppMaterialModule } from './material.module';
 import { SearchboxComponent } from './searchbox/searchbox.component';
+import { CardholderComponent } from './cardholder/cardholder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    SearchboxComponent    
+    SearchboxComponent,
+    CardholderComponent    
   ],
   imports: [
     HttpClientModule, BrowserModule, BrowserAnimationsModule, AppMaterialModule

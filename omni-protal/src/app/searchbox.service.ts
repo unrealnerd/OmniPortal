@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BotConductorResponse } from './models/botconductorresponse';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class SearchboxService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   readonly httpOptions = {
     headers: new HttpHeaders({
@@ -17,7 +17,16 @@ export class SearchboxService {
     })
   };
 
-  getSampleResponse(serviceUrl): Observable<BotConductorResponse> {
-    return this.http.post<BotConductorResponse>(serviceUrl, { "Message": "cbs" }, this.httpOptions);
+  private apiResponseSubject = new BehaviorSubject<any>("no data"); 
+
+  getBotConductorResponse(serviceUrl): Observable<BotConductorResponse> {
+    return this.http.post<BotConductorResponse>(serviceUrl, { "message": "cbs" }, this.httpOptions);        
+  }
+
+  sendApiResponse(response: any){
+    this.apiResponseSubject.next(response);
+  }
+  getApiResponse(): Observable<any> {
+    return this.apiResponseSubject.asObservable();
   }
 }
