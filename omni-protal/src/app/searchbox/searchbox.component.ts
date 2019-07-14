@@ -5,8 +5,7 @@ import { SearchboxService } from '../searchbox.service';
 @Component({
   selector: 'app-searchbox',
   templateUrl: './searchbox.component.html',
-  styleUrls: ['./searchbox.component.css'],
-  providers: [SearchboxService]
+  styleUrls: ['./searchbox.component.css'],  
 })
 export class SearchboxComponent implements OnInit {
 
@@ -15,13 +14,14 @@ export class SearchboxComponent implements OnInit {
   ngOnInit() {
   }
 
-  serviceUrl = 'http://localhost:5001/api/web/incoming';
+  serviceUrl = 'http://localhost:5000/api/web/incoming';
 
   fetch() {
-    console.log(this.searchboxService.getSampleResponse(this.serviceUrl)
+    this.searchboxService.getBotConductorResponse(this.serviceUrl)
       .subscribe((data: {}) => {
         alert(JSON.stringify(data));
-      }));
+        this.searchboxService.sendApiResponse(JSON.stringify(data));
+      });
   }
 
 }
