@@ -17,9 +17,9 @@ export class SearchboxComponent implements OnInit {
 
   fetch() {
     this.searchboxService.getBotConductorResponse(environment.botConductorApiEndpoint)
-      .subscribe((data: {}) => {
+      .subscribe((data: { message: string }) => {
         console.log(data);
-        this.searchboxService.sendApiResponse(JSON.stringify(data));
+        this.searchboxService.sendApiResponse(JSON.stringify(data.message));
       });
   }
 
