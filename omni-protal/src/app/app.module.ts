@@ -8,18 +8,21 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { AppMaterialModule } from './material.module';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { CardholderComponent } from './cardholder/cardholder.component';
+import { CardQuoteComponent } from './card-quote/card-quote.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     SearchboxComponent,
-    CardholderComponent    
+    CardholderComponent,
+    CardQuoteComponent
   ],
   imports: [
     HttpClientModule, BrowserModule, BrowserAnimationsModule, AppMaterialModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CardQuoteComponent]
 })
 export class AppModule { }

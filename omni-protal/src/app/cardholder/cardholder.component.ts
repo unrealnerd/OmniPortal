@@ -1,7 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Subscription } from 'rxjs';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+  ComponentFactoryResolver
+} from '@angular/core';
 
 import { SearchboxService } from '../searchbox.service';
+import { CardQuoteComponent } from '../card-quote/card-quote.component';
 
 @Component({
   selector: 'app-cardholder',
@@ -11,12 +17,23 @@ import { SearchboxService } from '../searchbox.service';
 export class CardholderComponent implements OnInit {
 
   apiResponse: string;
-  
-  constructor(private searchboxService: SearchboxService) {
+  @ViewChild('container', { static: true }) private container: ViewContainerRef;
+
+  constructor(
+    private searchboxService: SearchboxService,
+    private resolver: ComponentFactoryResolver) {
     this.searchboxService.getApiResponse().subscribe(value => {
       this.apiResponse = value;
-      console.log(value);
+      if (!value) {
+        this.createQuoteComponent(value);
+      }
     });
+  }
+
+  createQuoteComponent(quote: string) {
+    const factory = this.resolver.resolveComponentFactory(CardQuoteComponent);
+    const componentRef = this.container.createComponent(factory);
+    componentRef.instance.quote = quote;
   }
 
   ngOnInit() {

@@ -9,7 +9,7 @@ import { Observable, Subject, BehaviorSubject } from 'rxjs';
 })
 export class SearchboxService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   readonly httpOptions = {
     headers: new HttpHeaders({
@@ -17,15 +17,16 @@ export class SearchboxService {
     })
   };
 
-  private apiResponseSubject = new BehaviorSubject<any>("no data"); 
+  apiResponseSubject = new Subject<any>();
 
-  getBotConductorResponse(serviceUrl): Observable<BotConductorResponse> {
-    return this.http.post<BotConductorResponse>(serviceUrl, { "message": "cbs" }, this.httpOptions);        
+  getBotConductorResponse(serviceUrl: string): Observable<BotConductorResponse> {
+    return this.http.post<BotConductorResponse>(serviceUrl, { message: 'cbs' }, this.httpOptions);
   }
 
-  sendApiResponse(response: any){
+  sendApiResponse(response: any) {
     this.apiResponseSubject.next(response);
   }
+
   getApiResponse(): Observable<any> {
     return this.apiResponseSubject.asObservable();
   }
