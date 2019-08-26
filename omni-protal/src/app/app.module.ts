@@ -9,6 +9,7 @@ import { AppMaterialModule } from './material.module';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { CardholderComponent } from './cardholder/cardholder.component';
 import { CardQuoteComponent } from './card-quote/card-quote.component';
+import { CardHolderDirective } from './cardholder/cardholder.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CardQuoteComponent } from './card-quote/card-quote.component';
     ToolbarComponent,
     SearchboxComponent,
     CardholderComponent,
-    CardQuoteComponent
+    CardQuoteComponent,
+    CardHolderDirective
   ],
   imports: [
     HttpClientModule, BrowserModule, BrowserAnimationsModule, AppMaterialModule

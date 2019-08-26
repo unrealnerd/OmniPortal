@@ -3,36 +3,54 @@ import {
   OnInit,
   ViewChild,
   ViewContainerRef,
-  ComponentFactoryResolver
+  ComponentFactoryResolver,
+  Input,
+  SimpleChanges,
+  OnChanges
 } from '@angular/core';
 
 import { SearchboxService } from '../searchbox.service';
 import { CardQuoteComponent } from '../card-quote/card-quote.component';
+import { CardHolderDirective } from './cardholder.directive';
+import { _ } from 'lodash'
 
 @Component({
   selector: 'app-cardholder',
   templateUrl: './cardholder.component.html',
   styleUrls: ['./cardholder.component.css'],
 })
-export class CardholderComponent implements OnInit {
+export class CardholderComponent implements OnInit, OnChanges {
 
+  private cards: string[];
+
+  @Input()
   apiResponse: string;
-  @ViewChild('container', { static: true }) private container: ViewContainerRef;
+
+  @ViewChild(CardHolderDirective, { static: true })
+  private container: CardHolderDirective;
 
   constructor(
     private searchboxService: SearchboxService,
     private resolver: ComponentFactoryResolver) {
+
+    this.cards = [];
+
     this.searchboxService.getApiResponse().subscribe(value => {
+      console.log(value);
+      this.cards.push(value);
       this.apiResponse = value;
-      if (!value) {
-        this.createQuoteComponent(value);
-      }
+      this.createQuoteComponent(value);
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+
   }
 
   createQuoteComponent(quote: string) {
     const factory = this.resolver.resolveComponentFactory(CardQuoteComponent);
-    const componentRef = this.container.createComponent(factory);
+    const viewContainerRef = this.container.viewContainerRef;
+    const componentRef = viewContainerRef.createComponent(factory, 0);
     componentRef.instance.quote = quote;
   }
 
