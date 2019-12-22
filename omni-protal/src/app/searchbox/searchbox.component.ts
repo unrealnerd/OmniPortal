@@ -12,14 +12,16 @@ export class SearchboxComponent implements OnInit {
 
   constructor(private searchboxService: SearchboxService) { }
 
+  input: string;
+
   ngOnInit() {
   }
 
   fetch() {
-    this.searchboxService.getBotConductorResponse(environment.botConductorApiEndpoint)
+    this.searchboxService.getBotConductorResponse(environment.botConductorApiEndpoint, this.input)
       .subscribe((data: { message: string }) => {
         console.log(data);
-        this.searchboxService.sendApiResponse(JSON.stringify(data.message));
+        this.searchboxService.sendApiResponse(data);
       });
   }
 

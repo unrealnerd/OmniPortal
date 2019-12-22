@@ -8,8 +8,10 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { AppMaterialModule } from './material.module';
 import { SearchboxComponent } from './searchbox/searchbox.component';
 import { CardholderComponent } from './cardholder/cardholder.component';
-import { CardQuoteComponent } from './card-quote/card-quote.component';
+import { CardQuoteComponent } from './templates/card-quote/card-quote.component';
 import { CardHolderDirective } from './cardholder/cardholder.directive';
+import { CardImageComponent } from './templates/card-image/card-image.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,14 @@ import { CardHolderDirective } from './cardholder/cardholder.directive';
     SearchboxComponent,
     CardholderComponent,
     CardQuoteComponent,
-    CardHolderDirective
+    CardHolderDirective,
+    CardImageComponent
   ],
   imports: [
-    HttpClientModule, BrowserModule, BrowserAnimationsModule, AppMaterialModule
+    HttpClientModule, BrowserModule, BrowserAnimationsModule, AppMaterialModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [CardQuoteComponent]
+  entryComponents: [CardQuoteComponent, CardImageComponent]
 })
 export class AppModule { }

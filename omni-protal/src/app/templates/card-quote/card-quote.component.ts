@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardQuoteComponent implements OnInit {
 
-  @Input() quote: string;
+  @Input() Quote: string;
 
   constructor() { }
 

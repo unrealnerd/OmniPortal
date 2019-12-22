@@ -10,9 +10,10 @@ import {
 } from '@angular/core';
 
 import { SearchboxService } from '../searchbox.service';
-import { CardQuoteComponent } from '../card-quote/card-quote.component';
+import { CardQuoteComponent } from '../templates/card-quote/card-quote.component';
 import { CardHolderDirective } from './cardholder.directive';
 import { _ } from 'lodash'
+import { CardImageComponent } from '../templates/card-image/card-image.component';
 
 @Component({
   selector: 'app-cardholder',
@@ -24,7 +25,7 @@ export class CardholderComponent implements OnInit, OnChanges {
   private cards: string[];
 
   @Input()
-  apiResponse: string;
+  apiResponse: any;
 
   @ViewChild(CardHolderDirective, { static: true })
   private container: CardHolderDirective;
@@ -35,11 +36,11 @@ export class CardholderComponent implements OnInit, OnChanges {
 
     this.cards = [];
 
-    this.searchboxService.getApiResponse().subscribe(value => {
-      console.log(value);
-      this.cards.push(value);
-      this.apiResponse = value;
-      this.createQuoteComponent(value);
+    this.searchboxService.getApiResponse().subscribe(response => {
+      console.log(response);
+      this.cards.push(response);
+      this.apiResponse = response;
+      this.resolveTemplate(response);
     });
   }
 
@@ -47,11 +48,32 @@ export class CardholderComponent implements OnInit, OnChanges {
 
   }
 
-  createQuoteComponent(quote: string) {
+  private resolveTemplate(response: any) {
+    switch (response.template) {
+      case "IMAGE":
+        this.createImageComponent(response);
+        break;
+      case "QUOTE":
+        this.createQuoteComponent(response);
+        break;
+      default:
+        this.createQuoteComponent(response);
+        break;
+    }
+  }
+
+  createQuoteComponent(response: any) {
     const factory = this.resolver.resolveComponentFactory(CardQuoteComponent);
     const viewContainerRef = this.container.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(factory, 0);
-    componentRef.instance.quote = quote;
+    componentRef.instance.Quote = response.message;
+  }
+
+  createImageComponent(response: any) {
+    const factory = this.resolver.resolveComponentFactory(CardImageComponent);
+    const viewContainerRef = this.container.viewContainerRef;
+    const componentRef = viewContainerRef.createComponent(factory, 0);
+    componentRef.instance.Input = { imageUrl: response.imageUrl,title :response.title };
   }
 
   ngOnInit() {
