@@ -1,0 +1,4 @@
+.mat-paginator.paginator-left {
+  display: flex;
+  justify-content: right;
+}

@@ -14,6 +14,7 @@ import { CardQuoteComponent } from '../templates/card-quote/card-quote.component
 import { CardHolderDirective } from './cardholder.directive';
 import { _ } from 'lodash'
 import { CardImageComponent } from '../templates/card-image/card-image.component';
+import { CardGridComponent } from '../templates/card-grid/card-grid.component';
 
 @Component({
   selector: 'app-cardholder',
@@ -56,6 +57,9 @@ export class CardholderComponent implements OnInit, OnChanges {
       case "QUOTE":
         this.createQuoteComponent(response);
         break;
+      case "DATAGRID":
+        this.createDataGridComponent(response);
+        break;
       default:
         this.createQuoteComponent(response);
         break;
@@ -73,7 +77,14 @@ export class CardholderComponent implements OnInit, OnChanges {
     const factory = this.resolver.resolveComponentFactory(CardImageComponent);
     const viewContainerRef = this.container.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(factory, 0);
-    componentRef.instance.Input = { imageUrl: response.imageUrl,title :response.title };
+    componentRef.instance.Input = { imageUrl: response.imageUrl, title: response.title };
+  }
+
+  createDataGridComponent(response: any) {
+    const factory = this.resolver.resolveComponentFactory(CardGridComponent);
+    const viewContainerRef = this.container.viewContainerRef;
+    const componentRef = viewContainerRef.createComponent(factory, 0);
+    componentRef.instance.dataSource = response.message;
   }
 
   ngOnInit() {
