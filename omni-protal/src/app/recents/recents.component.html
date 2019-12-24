@@ -1,0 +1,14 @@
+<div class="list-group font-weight-light font-italic list-group-flush">
+  <div class="list-group-item list-group-item-action" *ngFor="let i of RecentItems">
+    <div class="row">
+      <div class="col-8">
+        {{i.text}}
+      </div>
+      <div class="col-4">
+        <i class="material-icons">
+          refresh
+        </i>
+      </div>
+    </div>
+  </div>
+</div>

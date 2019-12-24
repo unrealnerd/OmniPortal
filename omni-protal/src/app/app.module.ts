@@ -12,6 +12,8 @@ import { CardQuoteComponent } from './templates/card-quote/card-quote.component'
 import { CardHolderDirective } from './cardholder/cardholder.directive';
 import { CardImageComponent } from './templates/card-image/card-image.component';
 import { FormsModule } from '@angular/forms';
+import { ExplorerComponent } from './explorer/explorer.component';
+import { RecentsComponent } from './recents/recents.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { FormsModule } from '@angular/forms';
     CardholderComponent,
     CardQuoteComponent,
     CardHolderDirective,
-    CardImageComponent
+    CardImageComponent,
+    ExplorerComponent,
+    RecentsComponent
   ],
   imports: [
     HttpClientModule, BrowserModule, BrowserAnimationsModule, AppMaterialModule, FormsModule
