@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { SearchboxService } from '../searchbox.service';
 import { environment } from '../../environments/environment';
@@ -12,16 +12,17 @@ export class SearchboxComponent implements OnInit {
 
   constructor(private searchboxService: SearchboxService) { }
 
-  input: string;
+  query: string;  
 
   ngOnInit() {
   }
 
   fetch() {
-    this.searchboxService.getBotConductorResponse(environment.botConductorApiEndpoint, this.input)
+    this.searchboxService.publishSearchQuery(this.query);
+    this.searchboxService.getBotConductorResponse(environment.botConductorApiEndpoint, this.query)
       .subscribe((data: { message: string }) => {
-        console.log(data);
-        this.searchboxService.sendApiResponse(data);
+        console.log(data);        
+        this.searchboxService.publishApiResponse(data);
       });
   }
 

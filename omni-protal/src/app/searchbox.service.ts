@@ -18,16 +18,25 @@ export class SearchboxService {
   };
 
   apiResponseSubject = new Subject<any>();
+  searchQuery = new Subject<any>();
 
   getBotConductorResponse(serviceUrl: string, input: string): Observable<any> {
     return this.http.post<any>(serviceUrl, { message: input }, this.httpOptions);
   }
 
-  sendApiResponse(response: any) {
+  publishApiResponse(response: any) {
     this.apiResponseSubject.next(response);
   }
 
   getApiResponse(): Observable<any> {
     return this.apiResponseSubject.asObservable();
+  }
+
+  publishSearchQuery(q: any) {
+    this.searchQuery.next(q);
+  }
+
+  getSearchQuery(): Observable<any> {
+    return this.searchQuery.asObservable();
   }
 }
