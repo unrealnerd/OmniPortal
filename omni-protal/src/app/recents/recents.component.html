@@ -1,13 +1,14 @@
 <div class="list-group font-weight-light font-italic list-group-flush">
-  <div class="list-group-item list-group-item-action" *ngFor="let i of RecentItems">
+  <div class="list-group-item list-group-item-action p-0" *ngFor="let item of recentItems">
     <div class="row">
-      <div class="col-8">
-        {{i.text}}
+      <div class="col-8 h-25">
+        {{item.text}}
       </div>
-      <div class="col-4">
-        <i class="material-icons">
-          refresh
-        </i>
+      <div class="col-4 d-flex justify-content-end">
+        <button mat-icon-button (click)="onRefreshClick(item.value)">
+            <mat-icon>refresh</mat-icon>
+        </button>
+        
       </div>
     </div>
   </div>

@@ -9,14 +9,20 @@ import { SearchboxService } from '../searchbox.service';
 })
 export class RecentsComponent implements OnInit {
 
+  recentItems: RecentItem[];
+
   constructor(private searchboxService: SearchboxService) { }
 
-  RecentItems: RecentItem[];
-
   ngOnInit() {
-    this.RecentItems = [];
+    this.recentItems = [];
     this.searchboxService.getSearchQuery().subscribe(q => {
-      this.RecentItems.push({ text: q, value: q })
+      this.recentItems.push({ text: q, value: q })
+    });
+  }
+
+  onRefreshClick(q: string) {
+    this.searchboxService.getBotConductorResponse(q).subscribe((response) => {
+      this.searchboxService.publishApiResponse(response);
     });
   }
 
