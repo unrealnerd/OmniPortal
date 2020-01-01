@@ -15,6 +15,7 @@ import { CardHolderDirective } from './cardholder.directive';
 import { _ } from 'lodash'
 import { CardImageComponent } from '../templates/card-image/card-image.component';
 import { CardGridComponent } from '../templates/card-grid/card-grid.component';
+import { CardServicemapComponent } from '../templates/card-servicemap/card-servicemap.component';
 
 @Component({
   selector: 'app-cardholder',
@@ -60,6 +61,9 @@ export class CardholderComponent implements OnInit, OnChanges {
       case "DATAGRID":
         this.createDataGridComponent(response);
         break;
+      case "SERVICEMAP":
+        this.createServiceMapComponent(response);
+        break;
       default:
         this.createQuoteComponent(response);
         break;
@@ -70,14 +74,14 @@ export class CardholderComponent implements OnInit, OnChanges {
     const factory = this.resolver.resolveComponentFactory(CardQuoteComponent);
     const viewContainerRef = this.container.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(factory, 0);
-    componentRef.instance.Quote = response.message;
+    componentRef.instance.Quote = response.message.quote;
   }
 
   createImageComponent(response: any) {
     const factory = this.resolver.resolveComponentFactory(CardImageComponent);
     const viewContainerRef = this.container.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(factory, 0);
-    componentRef.instance.Input = { imageUrl: response.imageUrl, title: response.title };
+    componentRef.instance.Input = { imageUrl: response.message.imageUrl, title: response.message.title };
   }
 
   createDataGridComponent(response: any) {
@@ -85,6 +89,13 @@ export class CardholderComponent implements OnInit, OnChanges {
     const viewContainerRef = this.container.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(factory, 0);
     componentRef.instance.dataSource = response.message;
+  }
+
+  createServiceMapComponent(response: any) {
+    const factory = this.resolver.resolveComponentFactory(CardServicemapComponent);
+    const viewContainerRef = this.container.viewContainerRef;
+    const componentRef = viewContainerRef.createComponent(factory, 0);
+    componentRef.instance.services = response.message;
   }
 
   ngOnInit() {

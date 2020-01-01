@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { ExplorerComponent } from './explorer/explorer.component';
 import { RecentsComponent } from './recents/recents.component';
 import { CardGridComponent } from './templates/card-grid/card-grid.component';
+import { CardServicemapComponent } from './templates/card-servicemap/card-servicemap.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +28,14 @@ import { CardGridComponent } from './templates/card-grid/card-grid.component';
     CardImageComponent,
     ExplorerComponent,
     RecentsComponent,
-    CardGridComponent
+    CardGridComponent,
+    CardServicemapComponent
   ],
   imports: [
     HttpClientModule, BrowserModule, BrowserAnimationsModule, AppMaterialModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [CardQuoteComponent, CardImageComponent, CardGridComponent]
+  entryComponents: [CardQuoteComponent, CardImageComponent, CardGridComponent, CardServicemapComponent]
 })
 export class AppModule { }
