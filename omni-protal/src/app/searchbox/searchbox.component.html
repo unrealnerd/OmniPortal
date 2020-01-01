@@ -1,4 +1,6 @@
-<mat-grid-list cols="2" rowHeight="100">
+<input class="form-control mr-sm-2" type="search" [(ngModel)]="query" placeholder="Search" aria-label="Search">
+<button class="btn btn-outline-success my-2 my-sm-0" (click)=fetch()>Search</button>
+<!-- <mat-grid-list cols="2" rowHeight="100">
   <div class="field-container">
     <mat-grid-tile cols="6">
       <mat-form-field class="searchbox">
@@ -9,4 +11,4 @@
   <mat-grid-tile cols="6">
     <button mat-raised-button color="primary" (click)=fetch()>Search</button>
   </mat-grid-tile>
-</mat-grid-list>
+</mat-grid-list> -->
