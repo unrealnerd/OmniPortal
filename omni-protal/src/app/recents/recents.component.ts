@@ -16,7 +16,7 @@ export class RecentsComponent implements OnInit {
   ngOnInit() {
     this.recentItems = [];
     this.searchboxService.getSearchQuery().subscribe(q => {
-      this.recentItems.push({ text: q, value: q })
+      this.recentItems.unshift({ text: q, value: q })
     });
   }
 

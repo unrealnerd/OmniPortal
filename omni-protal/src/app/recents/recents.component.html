@@ -1,15 +1,23 @@
-<div class="list-group font-weight-light font-italic list-group-flush">
-  <div class="list-group-item list-group-item-action p-0" *ngFor="let item of recentItems">
-    <div class="row">
-      <div class="col-8 h-25">
-        {{item.text}}
+<div class="d-flex flex-column bg-light col-12">
+  <div class="accordion border-bottom" id="recentsAccordian">
+    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#recents" aria-expanded="true"
+      aria-controls="recents">
+      <small class="">Recents</small>
+    </button>
+  </div>  
+  <div id="recents" class="flex-fill collapse font-weight-light pt-2" data-parent="#recentsAccordian">
+    <div class="flex-fill d-flex flex-row" *ngFor="let item of recentItems">
+      <div class="flex-fill w-75">
+        <button class="btn btn-sm text-muted" (click)="onRefreshClick(item.value)">{{item.text}}</button>
       </div>
-      <div class="col-4 d-flex justify-content-end">
-        <button mat-icon-button (click)="onRefreshClick(item.value)">
-            <mat-icon>refresh</mat-icon>
-        </button>
-        
-      </div>
+      <div class="justify-content-end">        
+        <button class="btn btn-sm" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"><i class="material-icons md-18">more_horiz</i></button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#"><small class="text-muted">Pin</small></a>          
+          <a class="dropdown-item" href="#"><small class="text-muted">Retry</small></a>          
+        </div>
+      </div> 
     </div>
   </div>
 </div>
