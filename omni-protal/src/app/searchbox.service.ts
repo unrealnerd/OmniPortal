@@ -10,7 +10,7 @@ import { environment } from '../environments/environment';
 })
 export class SearchboxService {
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient) { }
 
   readonly httpOptions = {
     headers: new HttpHeaders({
@@ -26,6 +26,11 @@ export class SearchboxService {
   getBotConductorResponse(query: string): Observable<any> {
     this.publishSearchQuery(query);
     return this.http.post<any>(this.serviceUrl, { message: query }, this.httpOptions);
+  }
+
+  triggerBotConductor(query: string) {
+    this.publishSearchQuery(query);
+    this.http.post<any>(this.serviceUrl, { message: query }, this.httpOptions).subscribe(res => this.publishApiResponse(res));
   }
 
   publishApiResponse(response: any) {

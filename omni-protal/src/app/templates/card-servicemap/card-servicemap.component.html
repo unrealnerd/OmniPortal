@@ -1,4 +1,4 @@
-<div class="card w-100 shadow-sm">
+<div class="card w-100 shadow-sm  mb-4">
   <div class="card-body">
 
     <div class="row">
@@ -17,8 +17,8 @@
               </div>
             </div>
             
-            <div class="col-2" *ngIf="s.services == undefined">
-              <button type="button" class="btn btn-outline-primary">
+            <div class="col-2" *ngIf="s.isParent == false">
+              <button type="button" class="btn btn-outline-primary" (click)="triggerCommand(s.id)">
                 Run <span class="badge badge-light badge-pill">{{s.id}}</span>
               </button>
             </div>
@@ -28,4 +28,3 @@
     </div>
   </div>
 </div>
-<div class="row mt-5"></div>

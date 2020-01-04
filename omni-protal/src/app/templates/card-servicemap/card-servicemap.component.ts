@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Service } from 'src/app/models/service.model';
+import { SearchboxService } from 'src/app/searchbox.service';
 
 @Component({
   selector: 'app-card-servicemap',
@@ -11,9 +12,13 @@ export class CardServicemapComponent implements OnInit {
   @Input()
   services: Service[];
 
-  constructor() { }
+  constructor(private searchboxService: SearchboxService) { }
 
   ngOnInit() {
+  }
+
+  triggerCommand(q: string) {
+    this.searchboxService.triggerBotConductor(q);
   }
 
 }
