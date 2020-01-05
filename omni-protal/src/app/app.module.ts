@@ -16,6 +16,7 @@ import { ExplorerComponent } from './explorer/explorer.component';
 import { RecentsComponent } from './recents/recents.component';
 import { CardGridComponent } from './templates/card-grid/card-grid.component';
 import { CardServicemapComponent } from './templates/card-servicemap/card-servicemap.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CardServicemapComponent } from './templates/card-servicemap/card-servic
     ExplorerComponent,
     RecentsComponent,
     CardGridComponent,
-    CardServicemapComponent
+    CardServicemapComponent,
+    NavbarComponent
   ],
   imports: [
     HttpClientModule, BrowserModule, BrowserAnimationsModule, AppMaterialModule, FormsModule

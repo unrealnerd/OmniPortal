@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-sm navbar-light fixed-top shadow" style="background-color: #d2c9bc;">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand"><i class="material-icons">
+      settings_input_svideo
+    </i>
+  </a>
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngFor="let c of navLinks">
+        <button class="nav-link btn btn-link" (click)="triggerCommand(c.request)">{{c.name}}</button>
+      </li>
+    </ul>
+    <form class="form-inline">
+      <app-searchbox></app-searchbox>
+    </form>
+  </div>
+
+</nav>
