@@ -95,9 +95,9 @@ export class CardholderComponent implements OnInit, OnChanges {
     const factory = this.resolver.resolveComponentFactory(CardServicemapComponent);
     const viewContainerRef = this.container.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(factory, 0);
-    componentRef.instance.services = response.message;
+    componentRef.instance.services = response.message.filter(s => !s.hide);
   }
-
+  
   ngOnInit() {
   }
 }
