@@ -10,7 +10,7 @@
   <div class="collapse navbar-collapse" id="navbar">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" *ngFor="let c of navLinks">
-        <button class="nav-link btn btn-link" (click)="triggerCommand(c.request)">{{c.name}}</button>
+        <button class="nav-link btn btn-block" (click)="triggerCommand(c)">{{c.query}}</button>
       </li>
     </ul>
     <form class="form-inline">

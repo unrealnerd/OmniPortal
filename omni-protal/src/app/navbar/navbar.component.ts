@@ -17,8 +17,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  triggerCommand(command: string) {
-    this.searchService.triggerBotConductor(command);
+  triggerCommand(c: Command) {
+    this.searchService.triggerBotConductor(c);
   }
 
 }

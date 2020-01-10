@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar [navLinks]="navLinks"></app-navbar>
 <div class="container-fluid">
   <div class="row">
     <div class="col-3"></div>
@@ -7,10 +7,10 @@
   </div>
   <div class="row">
     <div class="col-2">
-      <app-recents></app-recents>
+      <app-recents (pin)="onRecentItemPinned($event)"></app-recents>
     </div>
     <div class="col-10">
-      <app-cardholder></app-cardholder>
+      <app-cardholder ></app-cardholder>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
-<div class="d-flex flex-column bg-light col-12">
+<div class="d-flex flex-column bg-color col-12">
   <div class="accordion border-bottom" id="recentsAccordian">
-    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#recents" aria-expanded="true"
+    <button class="btn btn-block" type="button" data-toggle="collapse" data-target="#recents" aria-expanded="true"
       aria-controls="recents">
       <small class="">Recents</small>
     </button>
@@ -8,14 +8,14 @@
   <div id="recents" class="flex-fill collapse font-weight-light pt-2" data-parent="#recentsAccordian">
     <div class="flex-fill d-flex flex-row" *ngFor="let item of recentItems">
       <div class="flex-fill w-75">
-        <button class="btn btn-sm text-muted" (click)="onRefreshClick(item.value)">{{item.text}}</button>
+        <button class="btn text-left btn-sm btn-block text-muted" (click)="onRefreshClick(item)">{{item.query}}</button>
       </div>
       <div class="justify-content-end">        
         <button class="btn btn-sm" type="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false"><i class="material-icons md-18">more_horiz</i></button>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#"><small class="text-muted">Pin</small></a>          
-          <a class="dropdown-item" href="#"><small class="text-muted">Retry</small></a>          
+          <button class="dropdown-item" (click)="onPinClick(item)"><small class="text-muted">Pin</small></button>          
+          <button class="dropdown-item" ><small class="text-muted">Retry</small></button>          
         </div>
       </div> 
     </div>

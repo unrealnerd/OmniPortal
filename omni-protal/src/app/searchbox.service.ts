@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BotConductorResponse } from './models/botconductorresponse';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { environment } from '../environments/environment';
+import { Command } from './models/command.model';
 
 
 @Injectable({
@@ -23,14 +24,14 @@ export class SearchboxService {
   apiResponseSubject = new Subject<any>();
   searchQuery = new Subject<any>();
 
-  getBotConductorResponse(query: string): Observable<any> {
-    this.publishSearchQuery(query);
-    return this.http.post<any>(this.serviceUrl, { message: query }, this.httpOptions);
+  getBotConductorResponse(command: Command): Observable<any> {
+    this.publishSearchQuery(command.query);
+    return this.http.post<any>(this.serviceUrl, { query: command.query }, this.httpOptions);
   }
 
-  triggerBotConductor(query: string) {
-    this.publishSearchQuery(query);
-    this.http.post<any>(this.serviceUrl, { message: query }, this.httpOptions).subscribe(res => this.publishApiResponse(res));
+  triggerBotConductor(command: Command) {
+    this.publishSearchQuery(command.query);
+    this.http.post<any>(this.serviceUrl, { query: command.query }, this.httpOptions).subscribe(res => this.publishApiResponse(res));
   }
 
   publishApiResponse(response: any) {

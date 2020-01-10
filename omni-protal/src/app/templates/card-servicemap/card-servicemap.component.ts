@@ -18,7 +18,7 @@ export class CardServicemapComponent implements OnInit {
   }
 
   triggerCommand(q: string) {
-    this.searchboxService.triggerBotConductor(q);
+    this.searchboxService.triggerBotConductor({ query: q, request: null });
   }
 
 }

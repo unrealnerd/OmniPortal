@@ -1,0 +1,29 @@
+<div class="card w-100 shadow-sm  mb-4">
+    <div class="card-body">  
+      <div class="row">  
+        <div class="list-group list-group-flush col-12">
+          <div class="list-group-item list-group-item-action" *ngFor="let s of services">
+            <div class="row">
+              <div class="col-3">
+                <h6 class="mb-1">{{s.name}}</h6>
+              </div>
+              <div class="col-7">
+                <p class="mb-1">{{s.description}}
+                </p>
+                <div>
+                  <small>{{s.tags}}</small>
+                </div>
+              </div>
+              
+              <div class="col-2" *ngIf="s.isParent == false">
+                <button type="button" class="btn btn-outline-primary" (click)="triggerCommand(s.id)">
+                  Run <span class="badge badge-light badge-pill">{{s.id}}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
