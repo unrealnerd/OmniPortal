@@ -11,13 +11,14 @@ import { CardholderComponent } from './cardholder/cardholder.component';
 import { CardQuoteComponent } from './templates/card-quote/card-quote.component';
 import { CardHolderDirective } from './cardholder/cardholder.directive';
 import { CardImageComponent } from './templates/card-image/card-image.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExplorerComponent } from './explorer/explorer.component';
 import { RecentsComponent } from './recents/recents.component';
 import { CardGridComponent } from './templates/card-grid/card-grid.component';
 import { CardServicemapComponent } from './templates/card-servicemap/card-servicemap.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CardServiceInputComponent } from './templates/card-service-input/card-service-input.component';
+import { CardModelFormComponent } from './templates/card-model-form/card-model-form.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +34,11 @@ import { CardServiceInputComponent } from './templates/card-service-input/card-s
     CardGridComponent,
     CardServicemapComponent,
     NavbarComponent,
-    CardServiceInputComponent
+    CardServiceInputComponent,
+    CardModelFormComponent
   ],
   imports: [
-    HttpClientModule, BrowserModule, BrowserAnimationsModule, AppMaterialModule, FormsModule
+    HttpClientModule, BrowserModule, BrowserAnimationsModule, AppMaterialModule, FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

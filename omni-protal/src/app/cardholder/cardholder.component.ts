@@ -16,6 +16,7 @@ import { _ } from 'lodash'
 import { CardImageComponent } from '../templates/card-image/card-image.component';
 import { CardGridComponent } from '../templates/card-grid/card-grid.component';
 import { CardServicemapComponent } from '../templates/card-servicemap/card-servicemap.component';
+import { CardModelFormComponent } from '../templates/card-model-form/card-model-form.component';
 
 @Component({
   selector: 'app-cardholder',
@@ -64,6 +65,9 @@ export class CardholderComponent implements OnInit, OnChanges {
       case "SERVICEMAP":
         this.createServiceMapComponent(response);
         break;
+      case "MODELFORM":
+        this.createModelFormComponent(response);
+        break;
       default:
         this.createQuoteComponent(response);
         break;
@@ -97,7 +101,14 @@ export class CardholderComponent implements OnInit, OnChanges {
     const componentRef = viewContainerRef.createComponent(factory, 0);
     componentRef.instance.services = response.message.filter(s => !s.hide);
   }
-  
+
+  createModelFormComponent(response: any) {
+    const factory = this.resolver.resolveComponentFactory(CardModelFormComponent);
+    const viewContainerRef = this.container.viewContainerRef;
+    const componentRef = viewContainerRef.createComponent(factory, 0);
+    componentRef.instance.model = response.message;
+  }
+
   ngOnInit() {
   }
 }

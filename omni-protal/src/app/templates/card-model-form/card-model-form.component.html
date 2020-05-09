@@ -1,0 +1,19 @@
+<div class="card w-100 shadow-sm  mb-4">
+    <div class="card-body">
+  
+      <div class="row">
+  
+        <form [formGroup]="modelForm" (ngSubmit)="onSubmit(modelForm.value)">
+            <div class="container" *ngFor="let p of model | keyvalue">
+                <div class="form-group">
+                    <label for="{{p.key}}">{{p.key}}</label>
+                    <input formControlName="{{p.key}}" type="text" class="form-control" id="{{p.key}}">
+                  </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+    </div>
+  </div>
+  
