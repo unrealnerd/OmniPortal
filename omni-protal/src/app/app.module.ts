@@ -42,6 +42,6 @@ import { CardModelFormComponent } from './templates/card-model-form/card-model-f
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [CardQuoteComponent, CardImageComponent, CardGridComponent, CardServicemapComponent]
+  entryComponents: [CardQuoteComponent, CardImageComponent, CardGridComponent, CardServicemapComponent, CardModelFormComponent]
 })
 export class AppModule { }

@@ -106,7 +106,7 @@ export class CardholderComponent implements OnInit, OnChanges {
     const factory = this.resolver.resolveComponentFactory(CardModelFormComponent);
     const viewContainerRef = this.container.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(factory, 0);
-    componentRef.instance.model = response.message;
+    componentRef.instance.template = response.requestTemplate;
   }
 
   ngOnInit() {
